@@ -1,0 +1,124 @@
+// Variables
+$color-primary:   #31B3F8;
+$color-secondary: #000000;
+$invert-color:    #ffffff;
+$border-radius:   3px;
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.simple-slider {
+  overflow: hidden;
+  position: relative;
+
+  &__wrap {
+    position: relative;
+  }
+  &__items {
+    display: flex;
+    position: relative;
+
+    width: 100%;
+    max-width: 100%;
+
+    transform: translate3d(0,0,0);
+    transition-timing-function: ease;
+
+    .simple-slider--slide & {
+      transition-property: transform;
+    }
+
+    .simple-slider--fade & {
+      transition-property: opacity;
+
+      &.fade {
+        -webkit-animation-fill-mode: both;
+        animation-fill-mode: both;
+        -webkit-animation-name: fadeIn;
+        animation-name: fadeIn;
+      }
+    }
+  }
+
+  &__item {
+    flex: 0 0 100%;
+    width: 100%;
+    height: 100%;
+  }
+
+  img {
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  // Simple slider navigation
+  &__navigation {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+  }
+  &__next,
+  &__prev {
+    position: absolute;
+    top: 0;
+    transform: translateY(-50%);
+    cursor: pointer;
+    padding: 5px 10px;
+    background: $color-primary;
+    color: $invert-color;
+    transition: .3s;
+    text-transform: uppercase;
+    border-radius: $border-radius;
+
+    &:hover {
+      background: $color-secondary;
+    }
+  }
+  &__next {
+    right: 0;
+  }
+  &__prev {
+    left: 0;
+  }
+
+  // Simple slider pagination
+  &__pagination {
+    text-align: center;
+    margin-top: 15px;
+  }
+  &__bullet {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: $color-secondary;
+    margin: 5px;
+    transition: .3s;
+    cursor: pointer;
+    
+    &:hover, 
+    &.active {
+      background: $color-primary;
+    }
+  }
+}

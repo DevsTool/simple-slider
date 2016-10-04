@@ -1,0 +1,28 @@
+{
+	"items" : [
+		{
+			"img": "img/01.jpg",
+			"alt" : ""
+		},
+		{
+			"img": "img/02.jpg",
+			"alt" : ""
+		},
+		{
+			"img": "img/03.jpg",
+			"alt" : ""
+		},
+		{
+			"img": "img/04.jpg",
+			"alt" : ""
+		},
+		{
+			"img": "img/05.jpg",
+			"alt" : ""
+		},
+		{
+			"img": "img/06.jpg",
+			"alt" : ""
+		}
+	]
+}
