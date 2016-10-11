@@ -118,9 +118,7 @@
 				 * Add slider pagination events.
 				 */
 				function addPaginationEvents() {
-					var $bullet = $( '.simple-slider__bullet', $this );
-
-					$bullet.on( 'click', slidingBullet );
+					$( '.simple-slider__bullet', $this ).on( 'click', slidingBullet );
 				}
 
 				/**
@@ -166,13 +164,9 @@
 				 * Sliding Bullet Handler.
 				 */
 				function slidingBullet() {
-					var $bulletIndex = $( this ).index(),
-						$offset;
+					$indexCurrentItem = $( this ).index();
 
-					$indexCurrentItem = $bulletIndex;
-					$offset = $sliderItemsWidth * $indexCurrentItem;
-
-					slidingAnimation( $offset );
+					slidingAnimation( $sliderItemsWidth * $indexCurrentItem );
 					addActiveClasses();
 				}
 
