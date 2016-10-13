@@ -34,31 +34,27 @@
 					$sliderItemsWidth = $sliderItems.width(),
 					$indexCurrentItem = 0;
 
-				(function() {
 
-					if ( settings.jsonData ) {
-						buildJsonItems();
-					}
+				if ( settings.jsonData ) {
+					buildJsonItems();
+				}
 
-					sliderStyle();
+				sliderStyle();
 
-					if ( settings.navigation ) {
-						buildNavigationHTML();
-						addNavigationEvents();
-					}
+				if ( settings.navigation ) {
+					buildNavigationHTML();
+					addNavigationEvents();
+				}
 
-					if ( settings.pagination ) {
-						buildPaginationHTML();
-						addPaginationEvents();
-					}
-					if ( settings.autoPlay ) {
-						autoPlay();
-					}
+				if ( settings.pagination ) {
+					buildPaginationHTML();
+					addPaginationEvents();
+				}
+				if ( settings.autoPlay ) {
+					autoPlay();
+				}
 
-					addResizeEvent();
-
-				})();
-
+				addResizeEvent();
 
 				/**
 				 * Slider inline style.
