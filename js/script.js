@@ -9,14 +9,15 @@
 		if ( $slider.length > 0 ) {
 			$slider.each( function() {
 				var $this = $( this ),
-					$sliderHeight = $this.data( 'height' ),
-					$sliderDuration = $this.data( 'duration' ),
-					$sliderAutoPlay = $this.data( 'auto-play' ),
-					$sliderAnimation = $this.data( 'animation' ),
-					$sliderNavigation = $this.data( 'navigation' ),
-					$sliderPagination = $this.data( 'pagination' ),
-					$sliderJson = $this.data( 'json' ),
-					$sliderJsonPath = $this.data( 'json-path' );
+					settings = $this.data( 'settings' ),
+					$sliderHeight = settings['height'],
+					$sliderDuration = settings['duration'],
+					$sliderAutoPlay = settings['auto-play'],
+					$sliderAnimation = settings['animation'],
+					$sliderNavigation = settings['navigation'],
+					$sliderPagination = settings['pagination'],
+					$sliderJson = settings['json'],
+					$sliderJsonPath = settings['json-path'];
 
 				$this.simpleSlider( {
 					height: $sliderHeight,
