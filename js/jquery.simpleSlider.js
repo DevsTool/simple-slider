@@ -189,7 +189,10 @@
 						addActiveClasses: function() {
 							var $activeBullet = $( '.simple-slider__bullet.active', $this ),
 								$bullet = $( '.simple-slider__bullet', $this ),
-								$activeSliderItem = $( '.simple-slider__item.current', $sliderItems );
+								$activeSliderItem = $( '.simple-slider__item.current', $sliderItems ),
+								removeAnimationClass = setTimeout( function() {
+									$sliderItems.removeClass( settings.animation );
+								}, settings.duration );
 
 							// add active class to bullet
 							$activeBullet.removeClass( 'active' );
@@ -201,9 +204,8 @@
 
 							// add animation class
 							$sliderItems.addClass( settings.animation );
-							setTimeout( function() {
-								$sliderItems.removeClass( settings.animation );
-							}, settings.duration );
+							removeAnimationClass();
+							clearTimeout( removeAnimationClass );
 						},
 
 						/**
