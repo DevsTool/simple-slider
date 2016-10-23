@@ -32,9 +32,10 @@
 					$sliderItem = $( '.simple-slider__item', $sliderItems ),
 					$itemsCount = $sliderItem.length,
 					$sliderItemsWidth = $sliderItems.width(),
-					$indexCurrentItem = 0,
 
 					simpleSlider = {
+
+						indexCurrentItem: 0,
 
 						render: function() {
 							if ( settings.jsonData ) {
@@ -119,9 +120,9 @@
 						addPaginationEvents: function() {
 							var self = this,
 								slidingBulletHandler = function() {
-									$indexCurrentItem = $( this ).index();
+									self.indexCurrentItem = $( this ).index();
 
-									self.slidingAnimation( $sliderItemsWidth * $indexCurrentItem );
+									self.slidingAnimation( $sliderItemsWidth * self.indexCurrentItem );
 									self.addActiveClasses();
 								};
 
@@ -134,14 +135,14 @@
 						slidingNext: function() {
 							var $offset;
 
-							if ( $indexCurrentItem === ( $itemsCount - 1 ) ) {
+							if ( this.indexCurrentItem === ( $itemsCount - 1 ) ) {
 								$offset = 0;
-								$indexCurrentItem = 0;
+								this.indexCurrentItem = 0;
 
 							}
 							else {
-								$offset = $sliderItemsWidth * ( $indexCurrentItem + 1 );
-								$indexCurrentItem++;
+								$offset = $sliderItemsWidth * ( this.indexCurrentItem + 1 );
+								this.indexCurrentItem++;
 							}
 
 							this.slidingAnimation( $offset );
@@ -154,13 +155,13 @@
 						slidingPrev: function() {
 							var $offset;
 
-							if ( $indexCurrentItem === 0 ) {
+							if ( this.indexCurrentItem === 0 ) {
 								$offset = $sliderItemsWidth * ( $itemsCount - 1 );
-								$indexCurrentItem = $itemsCount - 1;
+								this.indexCurrentItem = $itemsCount - 1;
 							}
 							else {
-								$offset = ( ( $sliderItemsWidth * $indexCurrentItem ) - $sliderItemsWidth );
-								$indexCurrentItem--;
+								$offset = ( ( $sliderItemsWidth * this.indexCurrentItem ) - $sliderItemsWidth );
+								this.indexCurrentItem--;
 							}
 
 							this.slidingAnimation( $offset );
@@ -192,11 +193,11 @@
 
 							// add active class to bullet
 							$activeBullet.removeClass( 'active' );
-							$bullet.eq( $indexCurrentItem ).addClass( 'active' );
+							$bullet.eq( this.indexCurrentItem ).addClass( 'active' );
 
 							// add active class to current slider item
 							$activeSliderItem.removeClass( 'current' );
-							$sliderItem.eq( $indexCurrentItem ).addClass( 'current' );
+							$sliderItem.eq( this.indexCurrentItem ).addClass( 'current' );
 
 							// add animation class
 							$sliderItems.addClass( settings.animation );
